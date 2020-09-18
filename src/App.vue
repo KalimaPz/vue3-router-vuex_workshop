@@ -1,32 +1,40 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app class="app-font">
+    <EducationCard 
+      place='Pakphanang'
+      startYear = '2010'
+      endYear = '2016'
+      program = 'Sci-Math' 
+    />
+    <WorkingExperiance
+      current = true
+      company = "Weserve Lifestyle Co."
+      position = "Front End Developer"
+      ability = "Flutter , Dart"
+    />
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import EducationCard from './components/EducationCard'
+import WorkingExperiance from './components/WorkingExperiance'
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
-}
+  components: {
+    EducationCard,
+    WorkingExperiance
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  data: () => ({
+    //
+  })
+};
+</script>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Mitr:wght@200;400;600&display=swap');
+  .app-font {
+    /* font-family: 'Mitr', sans-serif; */
+    font-family: 'Kanit', sans-serif;
+  }
 </style>
