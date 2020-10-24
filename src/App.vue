@@ -1,40 +1,45 @@
 <template>
-  <v-app class="app-font">
-    <EducationCard 
-      place='Pakphanang'
-      startYear = '2010'
-      endYear = '2016'
-      program = 'Sci-Math' 
-    />
-    <WorkingExperiance
-      current = true
-      company = "Weserve Lifestyle Co."
-      position = "Front End Developer"
-      ability = "Flutter , Dart"
-    />
-  </v-app>
+  <div>
+    <div>{{ info }}</div>
+    <div>{{ skills }}</div>
+    <div>{{ lifestyle }}</div>
+    <div>{{ interesting }}</div>
+    <div>{{ working_exp }}</div>
+    <div>{{ story }}</div>
+  </div>
 </template>
 
 <script>
-import EducationCard from './components/EducationCard'
-import WorkingExperiance from './components/WorkingExperiance'
+import axios from "axios";
 export default {
   name: "App",
-
-  components: {
-    EducationCard,
-    WorkingExperiance
+  data() {
+    return {
+      info: {},
+      skills: {},
+      lifestyle: [],
+      interesting: [],
+      working_exp: [],
+      story: ""
+    };
   },
-
-  data: () => ({
-    //
-  })
+  methods: {
+    async fetchMyData() {
+      let myData = await axios.get(
+        "https://resume-backend-services.herokuapp.com/api/person"
+      );
+      this.info = myData.data[0].info;
+      this.skills = myData.data[0].skills;
+      this.lifestyle = myData.data[0].lifestyle;
+      this.interesting = myData.data[0].interesting;
+      this.working_exp = myData.data[0].working_exp;
+      this.story = myData.data[0].story;
+    }
+  },
+  mounted() {
+    this.fetchMyData();
+  }
 };
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Mitr:wght@200;400;600&display=swap');
-  .app-font {
-    /* font-family: 'Mitr', sans-serif; */
-    font-family: 'Kanit', sans-serif;
-  }
 </style>
