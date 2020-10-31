@@ -1,45 +1,85 @@
 <template>
-  <div>
-    <div>{{ info }}</div>
-    <div>{{ skills }}</div>
-    <div>{{ lifestyle }}</div>
-    <div>{{ interesting }}</div>
-    <div>{{ working_exp }}</div>
-    <div>{{ story }}</div>
-  </div>
+<v-app class="app">
+    <div>
+        <NavBar />
+        <div>
+            <ProfilePicture :avatar_url="avatar_url" />
+            <div>
+                <MyInfo title="Info" />
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+
+</v-app>
 </template>
 
 <script>
 import axios from "axios";
+import MyInfo from "./components/MyInfo";
+// import Loading from './components/Loading'
+import NavBar from './components/NavBar'
+import ProfilePicture from './components/ProfilePicture'
+
 export default {
-  name: "App",
-  data() {
-    return {
-      info: {},
-      skills: {},
-      lifestyle: [],
-      interesting: [],
-      working_exp: [],
-      story: ""
-    };
-  },
-  methods: {
-    async fetchMyData() {
-      let myData = await axios.get(
-        "https://resume-backend-services.herokuapp.com/api/person"
-      );
-      this.info = myData.data[0].info;
-      this.skills = myData.data[0].skills;
-      this.lifestyle = myData.data[0].lifestyle;
-      this.interesting = myData.data[0].interesting;
-      this.working_exp = myData.data[0].working_exp;
-      this.story = myData.data[0].story;
+    name: "App",
+    components: {
+        MyInfo,
+        NavBar,
+        ProfilePicture
+    },
+    data() {
+        return {
+            biography: [],
+            avatar_url: ''
+        };
+    },
+    methods: {
+        async fetchMyData() {
+            let ownerData = await axios.get(
+                "https://resume-backend-services.herokuapp.com/api/person"
+            );
+            this.biography = ownerData.data
+        },
+        async fetchGithubData() {
+            let githubData = await axios.get(`https://api.github.com/users/KalimaPz`)
+            console.log(githubData.data.avatar_url)
+            this.avatar_url = githubData.data.avatar_url
+        }
+
+    },
+    mounted() {
+
+        this.fetchMyData();
+        this.fetchGithubData();
     }
-  },
-  mounted() {
-    this.fetchMyData();
-  }
 };
 </script>
+
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap');
+
+.app {
+    font-family: 'Kanit', sans-serif;
+}
+
+.nav-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 50px;
+
+}
+
+.info {
+    padding: 20px;
+}
 </style>
