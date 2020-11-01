@@ -11,7 +11,78 @@ am4core.useTheme(am4themes_animated);
 
 export default {
   name: "HelloWorld",
+  props: ["skills"],
   mounted() {
+    let main_node_size = 800;
+    let sub_node_size = 600;
+    let last_node_size = 400;
+
+    let basic_backend = [];
+
+    let basic_front = [];
+    let int_front = [];
+    let exp_front = [];
+
+    let basic_oth = [];
+    let int_oth = [];
+    let exp_oth = [];
+
+    this.skills.backend.basic.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: sub_node_size
+      };
+      basic_backend.push(skill);
+    });
+
+    this.skills.frontend.basic.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      basic_front.push(skill);
+    });
+
+    this.skills.frontend.intermediate.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      int_front.push(skill);
+    });
+
+    this.skills.frontend.expert.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      exp_front.push(skill);
+    });
+
+    this.skills.other.basic.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      basic_oth.push(skill);
+    });
+
+    this.skills.other.intermediate.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      int_oth.push(skill);
+    });
+
+    this.skills.other.expert.map(mapped_skill => {
+      let skill = {
+        name: mapped_skill,
+        value: last_node_size
+      };
+      exp_oth.push(skill);
+    });
+
     let chart = am4core.create(
       this.$refs.chartdiv,
       am4plugins_forceDirected.ForceDirectedTree
@@ -19,9 +90,7 @@ export default {
     let series = chart.series.push(
       new am4plugins_forceDirected.ForceDirectedSeries()
     );
-    let main_node_size = 800;
-    let sub_node_size = 600;
-    let last_node_size = 400;
+
     series.data = [
       {
         name: "Front-End",
@@ -30,44 +99,17 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: [
-              {
-                name: "HTML 5",
-                value: last_node_size
-              },
-              {
-                name: "Laravel",
-                value: last_node_size
-              },
-              {
-                name: "Vue",
-                value: last_node_size
-              },
-              {
-                name: "CSS 3",
-                value: last_node_size
-              }
-            ]
+            children: basic_front
           },
           {
             name: "Intermediate",
             value: sub_node_size,
-            children: [
-              {
-                name: "React",
-                value: last_node_size
-              }
-            ]
+            children: int_front
           },
           {
             name: "Expert",
             value: sub_node_size,
-            children: [
-              {
-                name: "Flutter",
-                value: last_node_size
-              }
-            ]
+            children: exp_front
           }
         ]
       },
@@ -78,20 +120,7 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: [
-              {
-                name: "Node.js",
-                value: last_node_size
-              },
-              {
-                name: "Springboot",
-                value: last_node_size
-              },
-              {
-                name: "Flask",
-                value: last_node_size
-              }
-            ]
+            children: basic_backend
           }
         ]
       },
@@ -102,60 +131,17 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: [
-              {
-                name: "Go",
-                value: last_node_size
-              },
-              {
-                name: "Php",
-                value: last_node_size
-              },
-              {
-                name: "Docker",
-                value: last_node_size
-              }
-            ]
+            children: basic_oth
           },
           {
             name: "Intermediate",
             value: sub_node_size,
-            children: [
-              {
-                name: "C",
-                value: last_node_size
-              },
-              {
-                name: "Typescript",
-                value: last_node_size
-              },
-              {
-                name: "Python",
-                value: last_node_size
-              },
-              {
-                name: "Git",
-                value: last_node_size
-              }
-            ]
+            children: int_oth
           },
           {
             name: "Expert",
             value: sub_node_size,
-            children: [
-              {
-                name: "Dart",
-                value: last_node_size
-              },
-              {
-                name: "Java",
-                value: last_node_size
-              },
-              {
-                name: "Shell",
-                value: last_node_size
-              }
-            ]
+            children: exp_oth
           }
         ]
       }
