@@ -1,95 +1,101 @@
 <template>
-<div>
-    <div v-if="isMobile === true">
-        <div class="profile-image">
-            <div id="inner">
-                <v-img id="image" :src="avatar_url" width="150"></v-img>
-                <div id="name">
-                    <h2>{{ full_name }}</h2>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div v-else>
-        <div class="profile-image">
-            <div id="zone">
-                <div>
-                    <v-img id="image" :src="avatar_url" width="250"></v-img>
-                </div>
-                <div id="details">
-                    <h1>{{ full_name }}</h1>
-                    <h2>{{ position}}</h2>
-                    <h3>at {{ work }}</h3>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <button @click="switchToMobile()"> Switch To Mobile
-    </button>
-    <button @click="switchToDesktop()"> Switch To Desktop
-    </button>
-</div>
+  <div>
+    <v-container fluid>
+      <v-row class="header" justify="center">
+        <v-col align-self="center">
+          <div class="center">
+            <v-img :src="avatar_url" max-width="256" id="image"></v-img>
+          </div>
+        </v-col>
+        <v-col align-self="center" class="details">
+          <v-row justify="center">
+            <h1>{{ full_name }}</h1>
+          </v-row>
+          <v-row justify="center">
+            <h2>{{ position }}</h2>
+          </v-row>
+          <v-row justify="center">
+            <h3>at {{ work }}</h3>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "ProfilePicture",
-    props: ['avatar_url'],
-    data() {
-        return {
-            isMobile: false,
-            full_name: 'Donnukrit Satirakul',
-            position: 'Front End Developer',
-            work: 'Weserve Lifestyle Co.'
-        }
+  name: "ProfilePicture",
+  props: ["avatar_url"],
+  data() {
+    return {
+      isMobile: false,
+      full_name: "Donnukrit Satirakul",
+      position: "Front End Developer",
+      work: "Weserve Lifestyle Co."
+    };
+  },
+  methods: {
+    switchToMobile() {
+      this.isMobile = true;
     },
-    methods: {
-        switchToMobile() {
-            this.isMobile = true;
-        },
-        switchToDesktop() {
-            this.isMobile = false;
-        }
-    },
-}
+    switchToDesktop() {
+      this.isMobile = false;
+    }
+  }
+};
 </script>
 
 <style scoped>
+.header {
+  padding: 30px;
+}
+
+.top-padd {
+  padding: 20%;
+}
+
 .profile-image {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
 }
 
 #inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #name {
-    text-align: center;
-    padding-top: 5%;
-
+  text-align: center;
+  padding-top: 5%;
 }
 
 #image {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 #zone {
-    padding: 10%;
+  padding: 10%;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-#details {
-    text-align: center;
+.details {
+  text-align: center;
+  width: fit-content;
+}
+
+.lined {
+  /* border-style: solid; */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 </style>
