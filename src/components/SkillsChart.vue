@@ -1,5 +1,14 @@
 <template>
-  <div class="hello" ref="chartdiv"></div>
+  <div>
+    <v-card flat>
+      <v-card-title class="header">
+        <v-row justify-lg="left" justify-sm="center">
+          <h2>Programing Skill</h2>
+        </v-row>
+      </v-card-title>
+      <div class="hello" ref="chartdiv"></div>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -13,9 +22,9 @@ export default {
   name: "HelloWorld",
   props: ["skills"],
   mounted() {
-    let main_node_size = 800;
-    let sub_node_size = 600;
-    let last_node_size = 400;
+    let main_node_size = 100;
+    let sub_node_size = 90;
+    let last_node_size = 80;
 
     let basic_backend = [];
 
@@ -177,5 +186,11 @@ export default {
 .hello {
   width: 100%;
   height: 500px;
+  padding: 20px;
+  
 }
+.header {
+  padding: 50px;
+}
+
 </style>

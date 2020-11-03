@@ -1,38 +1,53 @@
 <template>
-  <v-app class="app">
-    <div>
-      <NavBar />
-      <div class="content">
-        <ProfilePicture :avatar_url="avatar_url" />
-        <MyInfo
-          title="Info"
-          :info="biography[0].info"
-          :lifestyle="biography[0].lifestyle"
-          :interesting="biography[0].interesting"
-          :story="biography[0].story"
-        />
-        <SkillsChart title="Skills" :skills="biography[0].skills" />
+  <v-app class="app" dark>
+    <div v-if="biography.length == 0">
+      <Loading />
+    </div>
+
+    <div v-else>
+      <div>
+        <NavBar />
+        <div class="content">
+          <ProfilePicture :avatar_url="avatar_url" />
+          <MyInfo
+            title="Info"
+            :info="biography[0].info"
+            :lifestyle="biography[0].lifestyle"
+            :interesting="biography[0].interesting"
+            :story="biography[0].story"
+          />
+          <SkillsChart
+            title="Skills"
+            :skills="biography[0].skills"
+            id="section-skill"
+          />
+          <WorkExperience :workingExp="biography[0].working_exp" />
+        </div>
+        <Footer/>
       </div>
     </div>
-    <div></div>
   </v-app>
 </template>
 
 <script>
 import axios from "axios";
 import MyInfo from "./components/MyInfo";
-// import Loading from './components/Loading'
+import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import ProfilePicture from "./components/ProfilePicture";
 import SkillsChart from "./components/SkillsChart";
-
+import WorkExperience from "./components/WorkExperience";
+import Footer from "./components/Footer";
 export default {
   name: "App",
   components: {
     MyInfo,
     NavBar,
     ProfilePicture,
-    SkillsChart
+    SkillsChart,
+    Loading,
+    WorkExperience,
+    Footer
   },
   data() {
     return {
@@ -66,9 +81,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap");
-
+h2 {
+  color: black;
+}
 .app {
   font-family: "Kanit", sans-serif;
 }

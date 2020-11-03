@@ -1,19 +1,53 @@
 <template>
-  <div>
-    <div>{{ title }}</div>
-    <div>{{ work_exp }}</div>
+  <div class="work">
+    <v-card flat>
+      <v-col align-self="center">
+        <v-card-title>
+          <v-row justify="center"><h2>Working Experience</h2></v-row>
+        </v-card-title>
+        <v-card-text>
+          <v-row justify="center">
+            <div v-for="detail in workingExp" :key="detail">
+              <WorkCard
+                class="card-space"
+                :companyName="detail.company"
+                :position="detail.position"
+                :year="detail.year"
+                :current="detail.current"
+                :remark="detail.remark"
+              />
+            </div>
+          </v-row>
+        </v-card-text>
+      </v-col>
+    </v-card>
   </div>
 </template>
 
 <script>
+import WorkCard from "./WorkCard";
 export default {
   name: "WorkExperience",
-  props: {
-    title: String,
-    work_exp: Array
+  props: ["workingExp"],
+  components: {
+    WorkCard
   }
 };
 </script>
 
-<style>
+<style scoped>
+.card-area {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10;
+}
+
+.card-space {
+  padding: 10px;
+}
+.work {
+  margin-top: 20px;
+}
 </style>

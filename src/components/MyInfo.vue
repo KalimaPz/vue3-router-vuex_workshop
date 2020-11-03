@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid class="lined mx-auto">
+    <v-container fluid class="mx-auto">
       <v-row>
         <v-col align-self="center" sm="4" cols="12">
           <v-row justify="center">
@@ -8,16 +8,12 @@
           </v-row>
         </v-col>
         <v-col>
-          <div class="flex-col lined">
+          <div class="flex-col">
             <div class="padding-topic">
               <v-container>
                 <div><strong>About Me</strong></div>
                 <p>{{ story }}</p>
               </v-container>
-              <div>
-                <strong>Main Branch</strong> :
-                {{ info.education.university.main }}
-              </div>
               <div>
                 <strong>Main Branch</strong> :
                 {{ info.education.university.main }}
@@ -57,7 +53,7 @@
       </v-row>
     </v-container>
 
-    <v-container fluid class="lined">
+    <v-container fluid >
       <v-row>
         <v-col align-self="center" sm="4" cols="12">
           <v-row justify="center">
@@ -65,7 +61,7 @@
           </v-row>
         </v-col>
         <v-col>
-          <v-card class="mx-auto timeline-font">
+          <v-card class="mx-auto timeline-font" flat>
             <v-card-title>Timeline</v-card-title>
             <v-timeline dense>
               <v-timeline-item small>
@@ -73,18 +69,13 @@
                   ><strong>Prince of Songkhla University</strong></v-row
                 >
                 <v-row justify="center">Faculty of Engineering</v-row>
+                <v-row justify="center">Computer Engineering</v-row>
               </v-timeline-item>
               <v-timeline-item small>
                 <v-row justify="center"
-                  ><strong>Prince of Songkhla University</strong></v-row
+                  ><strong>Pakphanang School</strong></v-row
                 >
-                <v-row justify="center">Faculty of Engineering</v-row>
-              </v-timeline-item>
-              <v-timeline-item small>
-                <v-row justify="center"
-                  ><strong>Prince of Songkhla University</strong></v-row
-                >
-                <v-row justify="center">Faculty of Engineering</v-row>
+                <v-row justify="center">Science and Mathematic</v-row>
               </v-timeline-item>
             </v-timeline>
           </v-card>

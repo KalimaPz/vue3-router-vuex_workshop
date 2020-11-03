@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid>
+    <v-container fluid @mouseover="setNew()" @mouseout="setDefault()">
       <v-row class="header" justify="center">
         <v-col align-self="center">
           <div class="center">
@@ -36,6 +36,14 @@ export default {
     };
   },
   methods: {
+    setNew() {
+      this.position = "Computer Engineering";
+      this.work = "Prince of Songkhla University";
+    },
+    setDefault() {
+      this.position = "Front End Developer";
+      this.work = "Weserve Lifestyle Co.";
+    },
     switchToMobile() {
       this.isMobile = true;
     },
