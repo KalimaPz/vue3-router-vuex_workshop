@@ -1,14 +1,25 @@
 <template>
-  <v-app class="app" dark>
-    <div v-if="biography.length == 0">
-      <Loading />
-    </div>
+  <v-app class="app">
+    <ProfilePicture :avatarUrl="avatar_url" />
+    <MyInfo
+      title="Info"
+      :info="biography[0].info"
+      :lifestyle="biography[0].lifestyle"
+      :interesting="biography[0].interesting"
+      :story="biography[0].story"
+    />
+    <SkillsChart
+      title="Skills"
+      :skills="biography[0].skills"
+      id="section-skill"
+    />
 
-    <div v-else>
-      <div>
-        <NavBar />
-        <div class="content">
-          <ProfilePicture :avatar_url="avatar_url" />
+    <WorkExperience :workingExp="biography[0].working_exp" />
+
+    <Footer />
+  </v-app>
+
+  <!--
           <MyInfo
             title="Info"
             :info="biography[0].info"
@@ -16,45 +27,52 @@
             :interesting="biography[0].interesting"
             :story="biography[0].story"
           />
+
+          -->
+  <!---
+          
           <SkillsChart
             title="Skills"
             :skills="biography[0].skills"
             id="section-skill"
           />
+
+          -->
+
+  <!-- 
           <WorkExperience :workingExp="biography[0].working_exp" />
-        </div>
-        <Footer/>
-      </div>
-    </div>
-  </v-app>
+          -->
 </template>
 
 <script>
 import axios from "axios";
+// import LandingPage from "./components/views/LandingPage";
 import MyInfo from "./components/MyInfo";
-import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
+// import Loading from "./components/Loading";
+// import NavBar from "./components/NavBar";
 import ProfilePicture from "./components/ProfilePicture";
+
 import SkillsChart from "./components/SkillsChart";
 import WorkExperience from "./components/WorkExperience";
 import Footer from "./components/Footer";
 export default {
   name: "App",
   components: {
+    // LandingPage,
     MyInfo,
-    NavBar,
+    // NavBar,
     ProfilePicture,
     SkillsChart,
-    Loading,
+
     WorkExperience,
-    Footer
+    Footer,
   },
   data() {
     return {
       biography: [],
       avatar_url: "",
       num: 9,
-      text: ""
+      text: "",
     };
   },
   methods: {
@@ -72,37 +90,19 @@ export default {
     },
     add() {
       this.num++;
-    }
+    },
   },
   mounted() {
     this.fetchMyData();
     this.fetchGithubData();
-  }
+  },
 };
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap");
-h2 {
-  color: black;
-}
+
 .app {
   font-family: "Kanit", sans-serif;
-}
-
-.nav-row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  padding: 2%;
-}
-
-.info {
-  padding: 20px;
 }
 </style>
