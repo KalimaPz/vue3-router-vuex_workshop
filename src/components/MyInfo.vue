@@ -4,13 +4,13 @@
       <v-row>
         <v-col align-self="center" sm="4" cols="12">
           <v-row justify="center">
-            <div class="rounded-box">My Info</div>
+            <div class="rounded-box"><h2>My Info</h2></div>
           </v-row>
         </v-col>
         <v-col>
           <div class="flex-col">
             <div class="padding-topic">
-              <v-container>
+              <v-container id="con-mx">
                 <div><strong>About Me</strong></div>
                 <p>{{ story }}</p>
               </v-container>
@@ -57,7 +57,7 @@
       <v-row>
         <v-col align-self="center" sm="4" cols="12">
           <v-row justify="center">
-            <div class="rounded-box">Education</div>
+            <div class="rounded-box"><h2>Education</h2></div>
           </v-row>
         </v-col>
         <v-col>
@@ -65,12 +65,16 @@
             <v-card-title>Timeline</v-card-title>
             <v-timeline dense>
               <v-timeline-item small>
-                <v-row justify="center"><strong>Prince of Songkhla University</strong></v-row>
+                <v-row justify="center"
+                  ><strong>Prince of Songkhla University</strong></v-row
+                >
                 <v-row justify="center">Faculty of Engineering</v-row>
                 <v-row justify="center">Computer Engineering</v-row>
               </v-timeline-item>
               <v-timeline-item small>
-                <v-row justify="center"><strong>Pakphanang School</strong></v-row>
+                <v-row justify="center"
+                  ><strong>Pakphanang School</strong></v-row
+                >
                 <v-row justify="center">Science and Mathematic</v-row>
               </v-timeline-item>
             </v-timeline>
@@ -121,13 +125,19 @@ export default {
 }
 
 .rounded-box {
-  width: fit-content;
+  width: 200px;
+  text-align: center;
   padding: 20px;
-  background-color: aquamarine;
+  background-color: cornflowerblue;
+  color: white;
   border-radius: 10px;
 }
 
 .padding-topic {
   padding: 20px;
+}
+
+#con-mx {
+  margin-top: 25px;
 }
 </style>

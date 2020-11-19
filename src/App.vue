@@ -1,12 +1,57 @@
 <template>
   <v-app class="app">
     <div v-if="biography.length != 0">
-      <NavBar />
-      <ProfilePicture :avatarUrl="avatar_url" />
-      <MyInfo title="Info" :info="biography[0].info" :lifestyle="biography[0].lifestyle" :interesting="biography[0].interesting" :story="biography[0].story" />
-      <SkillsChart title="Skills" :skills="biography[0].skills" id="section-skill" class="screen-expanded" />
+      <v-app-bar fixed dense dark flat>
+        <v-col>KalimaPz</v-col>
+        <v-spacer></v-spacer>
+        <div v-if="!$vuetify.breakpoint.mobile">
+          <div class="nav-menu">
+            <v-col
+              ><v-btn text v-scroll-to="'#home'" class="nav-items">
+                Home
+              </v-btn></v-col
+            >
+            <v-col
+              ><v-btn text v-scroll-to="'#about'" class="nav-items">
+                About
+              </v-btn></v-col
+            >
+            <v-col
+              ><v-btn text v-scroll-to="'#skill'" class="nav-items">
+                Skills
+              </v-btn></v-col
+            >
+            <v-col
+              ><v-btn text v-scroll-to="'#work'" class="nav-items">
+                Work
+              </v-btn></v-col
+            >
+          </div>
+        </div>
+        <div v-else>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        </div>
+      </v-app-bar>
 
-      <WorkExperience :workingExp="biography[0].working_exp" />
+      <ProfilePicture :avatarUrl="avatar_url" id="home" />
+      <MyInfo
+        id="about"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        title="Info"
+        :info="biography[0].info"
+        :lifestyle="biography[0].lifestyle"
+        :interesting="biography[0].interesting"
+        :story="biography[0].story"
+      />
+      <SkillsChart
+        id="skill"
+        title="Skills"
+        :skills="biography[0].skills"
+        class="screen-expanded center"
+      />
+
+      <WorkExperience id="work" :workingExp="biography[0].working_exp" />
 
       <Footer />
     </div>
@@ -14,49 +59,27 @@
       <Loading />
     </div>
   </v-app>
-
-  <!--
-          <MyInfo
-            title="Info"
-            :info="biography[0].info"
-            :lifestyle="biography[0].lifestyle"
-            :interesting="biography[0].interesting"
-            :story="biography[0].story"
-          />
-
-          -->
-  <!---
-          
-          <SkillsChart
-            title="Skills"
-            :skills="biography[0].skills"
-            id="section-skill"
-          />
-
-          -->
-
-  <!-- 
-          <WorkExperience :workingExp="biography[0].working_exp" />
-          -->
 </template>
 
 <script>
 import axios from "axios";
-// import LandingPage from "./components/views/LandingPage";
+
 import MyInfo from "./components/MyInfo";
 import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import ProfilePicture from "./components/ProfilePicture";
-
 import SkillsChart from "./components/SkillsChart";
 import WorkExperience from "./components/WorkExperience";
 import Footer from "./components/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 export default {
   name: "App",
   components: {
-    // LandingPage,
     MyInfo,
-    NavBar,
+    // NavBar,
     ProfilePicture,
     SkillsChart,
     Loading,
@@ -73,7 +96,9 @@ export default {
   },
   methods: {
     async fetchMyData() {
-      let ownerData = await axios.get("https://resume-backend-services.herokuapp.com/api/person");
+      let ownerData = await axios.get(
+        "https://resume-backend-services.herokuapp.com/api/person"
+      );
       console.log(ownerData.data);
       this.biography = ownerData.data;
     },
@@ -98,5 +123,19 @@ export default {
 
 .app {
   font-family: "Kanit", sans-serif;
+}
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-items {
+  width: 100px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 </style>

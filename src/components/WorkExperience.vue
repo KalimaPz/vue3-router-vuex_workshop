@@ -9,6 +9,7 @@
           <v-row justify="center">
             <div v-for="detail in workingExp" :key="detail">
               <WorkCard
+                data-aos="fade-right"
                 class="card-space"
                 :companyName="detail.company"
                 :position="detail.position"
@@ -30,8 +31,8 @@ export default {
   name: "WorkExperience",
   props: ["workingExp"],
   components: {
-    WorkCard
-  }
+    WorkCard,
+  },
 };
 </script>
 

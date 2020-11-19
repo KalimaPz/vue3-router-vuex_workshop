@@ -6,10 +6,10 @@
     <v-spacer></v-spacer>
     <div v-if="!$vuetify.breakpoint.mobile">
       <div class="nav-menu">
-        <v-col>Home</v-col>
-        <v-col>About</v-col>
-        <v-col>Skills</v-col>
-        <v-col>Work</v-col>
+        <v-col><a v-scroll-to="'#element'">Home</a></v-col>
+        <v-col><a>About</a></v-col>
+        <v-col><a>Skills</a></v-col>
+        <v-col><a>Work</a></v-col>
       </div>
     </div>
     <div v-else>
@@ -25,8 +25,4 @@ export default {
 </script>
 
 <style scoped>
-.nav-menu {
-  display: flex;
-  flex-direction: row;
-}
 </style>

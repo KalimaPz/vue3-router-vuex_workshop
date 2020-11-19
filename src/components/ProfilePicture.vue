@@ -5,12 +5,19 @@
         <v-row>
           <v-col>
             <v-row justify="center">
-              <v-container class="container-image"> <v-img class="image" :src="avatarUrl" max-height="320" max-width="320"></v-img></v-container
+              <v-container class="container-image">
+                <v-img
+                  class="image"
+                  :src="avatarUrl"
+                  max-height="320"
+                  max-width="320"
+                  data-aos="fade-down"
+                ></v-img></v-container
             ></v-row>
           </v-col>
 
           <v-col align-self="center">
-            <v-container class="container-info">
+            <v-container class="container-info" data-aos="fade-down">
               <v-row justify="center"
                 ><h1>{{ full_name }}</h1></v-row
               >
@@ -28,10 +35,17 @@
     </div>
     <div v-else>
       <v-col>
-        <v-container class="container-image"> <v-img class="image" :src="avatarUrl" max-height="256" max-width="256"></v-img></v-container>
+        <v-container class="container-image">
+          <v-img
+            class="image"
+            :src="avatarUrl"
+            max-height="256"
+            max-width="256"
+          ></v-img
+        ></v-container>
         <v-container class="container-info">
           <v-row justify="center"
-            ><h1>{{ full_name }}</h1></v-row
+            ><h2>{{ full_name }}</h2></v-row
           >
           <v-row justify="center"
             ><h2>{{ position }}</h2></v-row
