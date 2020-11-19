@@ -53,7 +53,7 @@
       </v-row>
     </v-container>
 
-    <v-container fluid >
+    <v-container fluid>
       <v-row>
         <v-col align-self="center" sm="4" cols="12">
           <v-row justify="center">
@@ -65,16 +65,12 @@
             <v-card-title>Timeline</v-card-title>
             <v-timeline dense>
               <v-timeline-item small>
-                <v-row justify="center"
-                  ><strong>Prince of Songkhla University</strong></v-row
-                >
+                <v-row justify="center"><strong>Prince of Songkhla University</strong></v-row>
                 <v-row justify="center">Faculty of Engineering</v-row>
                 <v-row justify="center">Computer Engineering</v-row>
               </v-timeline-item>
               <v-timeline-item small>
-                <v-row justify="center"
-                  ><strong>Pakphanang School</strong></v-row
-                >
+                <v-row justify="center"><strong>Pakphanang School</strong></v-row>
                 <v-row justify="center">Science and Mathematic</v-row>
               </v-timeline-item>
             </v-timeline>
@@ -92,13 +88,16 @@ export default {
   data() {
     return {
       live: "Phuket",
-      home: "Nakorn Si Thammarat"
+      home: "Nakorn Si Thammarat",
     };
-  }
+  },
 };
 </script>
 
 <style>
+.screen-expanded {
+  height: 100vh;
+}
 .lined {
   border-style: solid;
 }

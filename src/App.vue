@@ -1,22 +1,18 @@
 <template>
   <v-app class="app">
-    <ProfilePicture :avatarUrl="avatar_url" />
-    <MyInfo
-      title="Info"
-      :info="biography[0].info"
-      :lifestyle="biography[0].lifestyle"
-      :interesting="biography[0].interesting"
-      :story="biography[0].story"
-    />
-    <SkillsChart
-      title="Skills"
-      :skills="biography[0].skills"
-      id="section-skill"
-    />
+    <div v-if="biography.length != 0">
+      <NavBar />
+      <ProfilePicture :avatarUrl="avatar_url" />
+      <MyInfo title="Info" :info="biography[0].info" :lifestyle="biography[0].lifestyle" :interesting="biography[0].interesting" :story="biography[0].story" />
+      <SkillsChart title="Skills" :skills="biography[0].skills" id="section-skill" class="screen-expanded" />
 
-    <WorkExperience :workingExp="biography[0].working_exp" />
+      <WorkExperience :workingExp="biography[0].working_exp" />
 
-    <Footer />
+      <Footer />
+    </div>
+    <div v-else>
+      <Loading />
+    </div>
   </v-app>
 
   <!--
@@ -48,8 +44,8 @@
 import axios from "axios";
 // import LandingPage from "./components/views/LandingPage";
 import MyInfo from "./components/MyInfo";
-// import Loading from "./components/Loading";
-// import NavBar from "./components/NavBar";
+import Loading from "./components/Loading";
+import NavBar from "./components/NavBar";
 import ProfilePicture from "./components/ProfilePicture";
 
 import SkillsChart from "./components/SkillsChart";
@@ -60,10 +56,10 @@ export default {
   components: {
     // LandingPage,
     MyInfo,
-    // NavBar,
+    NavBar,
     ProfilePicture,
     SkillsChart,
-
+    Loading,
     WorkExperience,
     Footer,
   },
@@ -77,9 +73,7 @@ export default {
   },
   methods: {
     async fetchMyData() {
-      let ownerData = await axios.get(
-        "https://resume-backend-services.herokuapp.com/api/person"
-      );
+      let ownerData = await axios.get("https://resume-backend-services.herokuapp.com/api/person");
       console.log(ownerData.data);
       this.biography = ownerData.data;
     },

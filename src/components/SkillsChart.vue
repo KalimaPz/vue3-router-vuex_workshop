@@ -36,69 +36,64 @@ export default {
     let int_oth = [];
     let exp_oth = [];
 
-    this.skills.backend.basic.map(mapped_skill => {
+    this.skills.backend.basic.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: sub_node_size
+        value: sub_node_size,
       };
       basic_backend.push(skill);
     });
 
-    this.skills.frontend.basic.map(mapped_skill => {
+    this.skills.frontend.basic.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       basic_front.push(skill);
     });
 
-    this.skills.frontend.intermediate.map(mapped_skill => {
+    this.skills.frontend.intermediate.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       int_front.push(skill);
     });
 
-    this.skills.frontend.expert.map(mapped_skill => {
+    this.skills.frontend.expert.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       exp_front.push(skill);
     });
 
-    this.skills.other.basic.map(mapped_skill => {
+    this.skills.other.basic.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       basic_oth.push(skill);
     });
 
-    this.skills.other.intermediate.map(mapped_skill => {
+    this.skills.other.intermediate.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       int_oth.push(skill);
     });
 
-    this.skills.other.expert.map(mapped_skill => {
+    this.skills.other.expert.map((mapped_skill) => {
       let skill = {
         name: mapped_skill,
-        value: last_node_size
+        value: last_node_size,
       };
       exp_oth.push(skill);
     });
 
-    let chart = am4core.create(
-      this.$refs.chartdiv,
-      am4plugins_forceDirected.ForceDirectedTree
-    );
-    let series = chart.series.push(
-      new am4plugins_forceDirected.ForceDirectedSeries()
-    );
+    let chart = am4core.create(this.$refs.chartdiv, am4plugins_forceDirected.ForceDirectedTree);
+    let series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
 
     series.data = [
       {
@@ -108,19 +103,19 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: basic_front
+            children: basic_front,
           },
           {
             name: "Intermediate",
             value: sub_node_size,
-            children: int_front
+            children: int_front,
           },
           {
             name: "Expert",
             value: sub_node_size,
-            children: exp_front
-          }
-        ]
+            children: exp_front,
+          },
+        ],
       },
       {
         name: "Back-End",
@@ -129,9 +124,9 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: basic_backend
-          }
-        ]
+            children: basic_backend,
+          },
+        ],
       },
       {
         name: "Other",
@@ -140,20 +135,20 @@ export default {
           {
             name: "Basic",
             value: sub_node_size,
-            children: basic_oth
+            children: basic_oth,
           },
           {
             name: "Intermediate",
             value: sub_node_size,
-            children: int_oth
+            children: int_oth,
           },
           {
             name: "Expert",
             value: sub_node_size,
-            children: exp_oth
-          }
-        ]
-      }
+            children: exp_oth,
+          },
+        ],
+      },
     ];
 
     series.dataFields.linkWith = "linkWith";
@@ -178,7 +173,7 @@ export default {
     if (this.chart) {
       this.chart.dispose();
     }
-  }
+  },
 };
 </script>
 
@@ -187,10 +182,8 @@ export default {
   width: 100%;
   height: 500px;
   padding: 20px;
-  
 }
 .header {
   padding: 50px;
 }
-
 </style>

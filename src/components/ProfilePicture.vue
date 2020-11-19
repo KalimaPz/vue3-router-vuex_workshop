@@ -5,13 +5,7 @@
         <v-row>
           <v-col>
             <v-row justify="center">
-              <v-container class="container-image">
-                <v-img
-                  class="image"
-                  :src="avatarUrl"
-                  max-height="320"
-                  max-width="320"
-                ></v-img></v-container
+              <v-container class="container-image"> <v-img class="image" :src="avatarUrl" max-height="320" max-width="320"></v-img></v-container
             ></v-row>
           </v-col>
 
@@ -34,14 +28,7 @@
     </div>
     <div v-else>
       <v-col>
-        <v-container class="container-image">
-          <v-img
-            class="image"
-            :src="avatarUrl"
-            max-height="256"
-            max-width="256"
-          ></v-img
-        ></v-container>
+        <v-container class="container-image"> <v-img class="image" :src="avatarUrl" max-height="256" max-width="256"></v-img></v-container>
         <v-container class="container-info">
           <v-row justify="center"
             ><h1>{{ full_name }}</h1></v-row
