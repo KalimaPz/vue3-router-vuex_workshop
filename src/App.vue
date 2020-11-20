@@ -29,10 +29,26 @@
           </div>
         </div>
         <div v-else>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+          ></v-app-bar-nav-icon>
         </div>
       </v-app-bar>
+      <v-navigation-drawer right floating temporary v-model="drawer" fixed>
+        <v-list dense rounded>
+          <v-list-item v-for="item in items" :key="item.title" link>
+            <div class="drawer-item">
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
 
+              <v-list-item-content v-scroll-to="item.pos">
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </div>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
       <ProfilePicture :avatarUrl="avatar_url" id="home" />
       <MyInfo
         id="about"
@@ -79,7 +95,7 @@ export default {
   name: "App",
   components: {
     MyInfo,
-    // NavBar,
+
     ProfilePicture,
     SkillsChart,
     Loading,
@@ -92,6 +108,14 @@ export default {
       avatar_url: "",
       num: 9,
       text: "",
+      drawer: false,
+      group: null,
+      items: [
+        { title: "Home", icon: "mdi-home", pos: "#home" },
+        { title: "About", icon: "mdi-information", pos: "#about" },
+        { title: "Skills", icon: "mdi-hand", pos: "#skill" },
+        { title: "Work", icon: "mdi-briefcase", pos: "#work" },
+      ],
     };
   },
   methods: {
@@ -115,6 +139,11 @@ export default {
     this.fetchMyData();
     this.fetchGithubData();
   },
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+  },
 };
 </script>
 
@@ -137,5 +166,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: center;
+}
+
+.drawer-item {
+  display: flex;
+  flex-direction: row;
 }
 </style>

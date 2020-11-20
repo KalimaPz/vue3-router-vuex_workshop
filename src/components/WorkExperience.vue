@@ -3,7 +3,7 @@
     <v-card flat>
       <v-col align-self="center">
         <v-card-title>
-          <v-row justify="center"><h2>Working Experience</h2></v-row>
+          <v-row justify="center header"><h2>Working Experience</h2></v-row>
         </v-card-title>
         <v-card-text>
           <v-row justify="center">
@@ -49,6 +49,10 @@ export default {
   padding: 10px;
 }
 .work {
-  margin-top: 20px;
+  height: 100vh;
+}
+
+.header {
+  padding: 50px;
 }
 </style>
