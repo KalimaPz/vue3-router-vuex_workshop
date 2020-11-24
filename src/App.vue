@@ -74,12 +74,11 @@
       />
 
       <WorkExperience id="work" :workingExp="biography[0].working_exp" />
-
-      <Footer />
     </div>
     <div v-else>
       <Loading />
     </div>
+    <Footer />
   </v-app>
 </template>
 
@@ -155,7 +154,14 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap");
-
+#work {
+  margin-bottom: 100px;
+}
+@media only screen and (max-width: 500px) {
+  #about {
+    padding-top: 56px;
+  }
+}
 .app {
   font-family: "Kanit", sans-serif;
 }
