@@ -55,4 +55,10 @@ export default {
 .header {
   padding: 50px;
 }
+
+@media only screen and (max-width: 500px) {
+  h2 {
+    font-size: 1em;
+  }
+}
 </style>

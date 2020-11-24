@@ -36,13 +36,19 @@
       </v-app-bar>
       <v-navigation-drawer right floating temporary v-model="drawer" fixed>
         <v-list dense rounded>
-          <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            v-scroll-to="item.pos"
+            @click="drawer = !drawer"
+            link
+          >
             <div class="drawer-item">
               <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-item-icon>
 
-              <v-list-item-content v-scroll-to="item.pos">
+              <v-list-item-content>
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item-content>
             </div>
