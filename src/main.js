@@ -5,9 +5,12 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import VueFirestore from 'vue-firestore'
+
 var VueScrollTo = require('vue-scrollto');
 Vue.config.productionTip = false;
 Vue.use(axios, VueAxios);
+Vue.use(VueFirestore)
 Vue.use(VueScrollTo)
 Vue.use(VueScrollTo, {
   container: "body",
