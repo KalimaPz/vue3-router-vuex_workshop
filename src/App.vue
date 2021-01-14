@@ -1,13 +1,7 @@
 <template>
-
-  <v-app>
-  
 <div>
-  <div v-for="elem in my_info" :key="elem.info">
-{{ elem.info}}
-  </div>
+  
 </div>
-  </v-app>
 </template>
 
 <script>
