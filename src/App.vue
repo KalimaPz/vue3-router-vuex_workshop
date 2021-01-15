@@ -1,6 +1,7 @@
 <template>
 <div>
   <h1>HelloWorld</h1>
+  
   <h2>Hello FROM PHONE!</h2>
 </div>
 </template>
@@ -24,7 +25,8 @@ export default {
  },
   methods : {
 
-  }
+  },
+  
 };
 </script>
 
