@@ -1,16 +1,16 @@
 <template>
 <div>
-  <h1>HelloWorld</h1>
-  
-  <h2>Hello FROM PHONE!</h2>
+  Hello World
+  {{ $store.state.count }}
+  <button @click="add()">INCREASE</button>
 </div>
 </template>
 
 <script>
 import { db } from './config/config'
-
 export default {
   name: "App",
+
 
  data : () => {
    return {
@@ -24,7 +24,9 @@ export default {
    }
  },
   methods : {
-
+    add() {
+      this.$store.dispatch('INCREASE')
+    }
   },
   
 };

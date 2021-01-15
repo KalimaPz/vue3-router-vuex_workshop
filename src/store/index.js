@@ -7,10 +7,14 @@ export default new Vuex.Store({
   state: {
     count : 0
   },
-  mutations: {},
+  mutations: {
+    increment () {
+    this.state.count++
+    }
+  },
   actions: {
-    increment (state) {
-      state.count++
+    INCREASE(context) {
+      context.commit('increment')
     }
   },
   modules: {}
