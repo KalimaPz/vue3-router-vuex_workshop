@@ -1,7 +1,6 @@
 <template>
 <div>
-  <h1>HelloWorld</h1>
-  <h2>Hello FROM PHONE!</h2>
+  <router-view/>
 </div>
 </template>
 
