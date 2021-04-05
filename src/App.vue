@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <!-- {{ $store.state.biograph.info }} -->
+  <v-app>
     <div v-if="$store.state.loading == true">
-      <h1> Loading </h1>
+      <Loading />
     </div>
     <div v-else>
- <h1> Finish </h1>
+      <HomePage />
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
+import HomePage from "./views/HomePage.vue";
+import Loading from "./views/Loading.vue";
 export default {
   name: "App",
+  components: { HomePage, Loading },
   data() {
     return {};
   },
@@ -28,5 +30,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
