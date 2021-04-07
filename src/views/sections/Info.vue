@@ -1,15 +1,22 @@
 <template>
   <div>
     <div>
-      {{ this.$store.state.biograph }}
       <div class="section-about-myself">
         <h1>Aboue Myself</h1>
+        {{ this.$store.state.biograph }}
         <v-card>
           <p>{{ bio_data.info.education.university.faculty }}</p>
-          <p>{{ bio_data.info.education.university.main }}</p>
-          <p>{{ bio_data.info.education.university.sub }}</p>
+          <p><b>Major : </b> {{ bio_data.info.education.university.main }}</p>
+          <p><b>Minor : </b> {{ bio_data.info.education.university.sub }}</p>
+          <!-- <li v-for="interest in bio_data.info"></li> -->
+          <div>
+            <div>Interesting in</div>
+            <li>Database</li>
+            <li>Web Development</li>
+            <li>Object Oriented Programing</li>
+            <li>Cryptocurrency</li>
+          </div>
         </v-card>
-        <v-timeline> </v-timeline>
       </div>
     </div>
   </div>
